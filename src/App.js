@@ -7,12 +7,16 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity
 } from "react-native";
+import PhotoView from "react-native-photo-view";
+
 import {
   createStackNavigator,
   createAppContainer,
   NavigationEvents
 } from "react-navigation";
 
+import Photo from "./Photo";
+import Previw from "./Preview";
 const { width, height } = Dimensions.get("window");
 
 function forVertical(props) {
@@ -43,11 +47,30 @@ class HomeScreen extends React.Component {
           backgroundColor: "#fff"
         }}
       >
-        <Text>Home Screen</Text>
+        <PhotoView
+          source={{
+            uri:
+              "https://github.com/mariohahn/MHVideoPhotoGallery/raw/master/Images%20Github/dismissInteractive.gif"
+          }}
+          minimumZoomScale={0.5}
+          maximumZoomScale={3}
+          style={{
+            width: 300,
+            height: 300,
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        />
         <Button
           title="跳转"
           onPress={() => {
             this.props.navigation.navigate("Detail");
+          }}
+        />
+        <Button
+          title="照片"
+          onPress={() => {
+            this.props.navigation.navigate("Photo");
           }}
         />
       </View>
@@ -171,16 +194,18 @@ const TransparentNavigator = createStackNavigator(
 const AppNavigator = createStackNavigator(
   {
     Home: HomeScreen,
-    Demo: TransparentNavigator
+    Demo: TransparentNavigator,
+    Photo,
+    Previw
   },
   {
     mode: "modal",
     headerMode: "none",
-    cardShadowEnabled: false,
-    cardStyle: {
-      backgroundColor: "rgba(0, 0, 0, 0)",
-      opacity: 1
-    }
+    cardShadowEnabled: false
+    // cardStyle: {
+    //   backgroundColor: "rgba(0, 0, 0, 0)",
+    //   opacity: 1
+    // }
   }
 );
 
