@@ -7,6 +7,8 @@
     "test": "jest"
   },
   "dependencies": {
+    "native-base": "^2.12.1",
+    "rc-form": "^2.4.5",
     "react": "16.8.3",
     "react-native": "0.59.8",
     "react-native-gesture-handler": "^1.2.1",
